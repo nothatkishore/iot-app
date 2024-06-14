@@ -10,6 +10,8 @@ import { createUser } from '../../lib/appwrite'
 
 const SignUp = () => {
 
+  const { setUser, setIsLogin } = useGlobalContext()
+
   const [form, setForm] = useState({
     username: '',
     email: '',
@@ -23,14 +25,14 @@ const SignUp = () => {
 
     setIssubmitting(true)
 
-    try 
-    {
+    try {
       const result = await createUser(form.email, form.username, form.password)
+      setUser(result)
+      setIsLogin(true)
       router.replace('/home')
     }
 
-    catch (error) 
-    {
+    catch (error) {
       Alert.alert('Error', error.message)
     }
 

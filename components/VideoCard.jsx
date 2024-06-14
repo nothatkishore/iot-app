@@ -40,13 +40,14 @@ const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avat
 
       {
         play ? (
-          
+
           <Video
             source={{ uri: video }}
             className="w-full h-60 rounded-xl mt-3 bg-white/10"
-            resizeMode={ResizeMode.CONTAIN}
             useNativeControls
-            shouldPlay={play}
+            shouldPlay
+            resizeMode="cover"
+            isLooping
             onPlaybackStatusUpdate={(status) => {
               if (status.didJustFinish) {
                 setPlay(false);

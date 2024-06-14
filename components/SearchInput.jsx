@@ -1,9 +1,11 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import { React, useState } from 'react'
 import { icons } from '../constants'
+import { router, usePathname } from 'expo-router'
 
-const SearchInput = ({ title, value, placeholder, handleChangeText, OtherStyles, ...props }) => {
-    const [password, setPassword] = useState('false')
+const SearchInput = ({ initialQuery }) => {
+    const pathName = usePathname()
+    const [query, setQuery] = useState(initialQuery || '')
 
     return (
 
@@ -12,18 +14,28 @@ const SearchInput = ({ title, value, placeholder, handleChangeText, OtherStyles,
 
             <TextInput
                 className='text-base mt-0.5 text-white flex-1 font-pregular'
-                value={value}
+                value={query}
                 placeholder="Search for a video topic"
-                placeholderTextColor='#7b7b8b'
-                onChangeText={handleChangeText}
-                secureTextEntry={title === 'Password' && !password}
+                placeholderTextColor='#CDCDE0'
+                onChangeText={(event) => setQuery(event)}
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => {
+                    if (!query) {
+                        return Alert.alert('Missing query', 'Give input to search across db')
+                    }
+
+                    if (pathName.startsWith('/search'))
+                        router.setParams({ query })
+                    else
+                        router.push(`/search/${query}`)
+                }}
+            >
                 <Image
                     source={icons.search}
                     className='w-5 h-5'
-                    resizeMode='contain' 
+                    resizeMode='contain'
                 />
             </TouchableOpacity>
 

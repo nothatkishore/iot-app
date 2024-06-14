@@ -1,5 +1,5 @@
-import { View, Text, Alert } from 'react-native'
-import { useEffect, useState } from 'react'
+import { View, Text } from 'react-native'
+import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FlatList, RefreshControl } from 'react-native-gesture-handler'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -11,13 +11,15 @@ import Trending from '../../components/Trending';
 import EmptyState from '../../components/EmptyState';
 import { getAllposts, getLatestposts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
+import { useGlobalContext } from '../../context/GlobalProvider'
+
 
 
 const home = () => {
 
   const { data: post, reFetch } = useAppwrite(getAllposts)
-
-  const { data : latestPost } = useAppwrite(getLatestposts)
+  const { user } = useGlobalContext()
+  const { data: latestPost } = useAppwrite(getLatestposts)
 
   const [refreshing, setRefreshing] = useState(false)
   const onRefresh = async () => {
@@ -33,8 +35,8 @@ const home = () => {
           data={post}
           keyExtractor={(item) => item.$id}
           renderItem={({ item }) => (
-            <VideoCard 
-              video = {item} 
+            <VideoCard
+              video={item}
             />
           )}
           ListHeaderComponent={() => (
@@ -45,7 +47,7 @@ const home = () => {
                     Welcome Back
                   </Text>
                   <Text className="text-2xl font-psemibold text-white">
-                    JSMastery
+                    {user?.username}
                   </Text>
                 </View>
 

@@ -4,21 +4,23 @@ import images from '../../constants/images'
 import FormField from '../../components/FormField'
 import CButton from '../../components/CButton'
 import { Link, router } from 'expo-router'
-import { signin } from '../../lib/appwrite' 
-import { Alert } from 'react-native' 
+import { getCurrentUser, signin } from '../../lib/appwrite'
+import { Alert } from 'react-native'
+import { useGlobalContext } from '../../context/GlobalProvider'
 
 
-const signIn = () => 
-{
+const signIn = () => {
+
+  const { setUser, setIsLogin } = useGlobalContext()
+
   const [form, setForm] = useState({
-    email : '',
-    password : ''
+    email: '',
+    password: ''
   })
 
   const [isSubmitting, setisSubmitting] = useState(false)
 
-  const submit = async () =>
-  {
+  const submit = async () => {
     if (!form.email || !form.password) {
       Alert.alert('Error', 'Please fill in all the fields')
     }
@@ -27,6 +29,11 @@ const signIn = () =>
 
     try {
       await signin(form.email, form.password)
+
+      const result = await getCurrentUser()
+      setUser(result)
+      setIsLogin(true)
+
       router.replace('/home')
     }
 
