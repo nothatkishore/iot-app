@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native';
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '../constants/images';
 import CButton from '../components/CButton';
@@ -10,7 +10,7 @@ const index = () =>
 {
   const { isLoading, isLogin } = useGlobalContext();
 
-  if (!isLoading && isLogin) 
+  if (isLogin && !isLoading) 
     return <Redirect href='/home' />;
 
   return (

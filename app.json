@@ -21,10 +21,14 @@
         "backgroundColor": "#ffffff"
       },
       "package": "react.app.aora"
-
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "890983fd-6bcf-43b4-9e08-b71f54b0d014"
+      }
     }
   }
 }
