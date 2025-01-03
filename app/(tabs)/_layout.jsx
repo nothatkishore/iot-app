@@ -13,7 +13,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
                 resizeMode='contain'
             />
 
-            <Text className={`${focused ? 'font-psemibold' : 'font-pregular'} text-[10px] text-white`}>
+            <Text className={`${focused ? 'font-semibold' : 'font-regular'} text-[10px] text-white`}>
                 {name}
             </Text>
         </View>
@@ -57,13 +57,13 @@ const TabsLayout = () => {
                 <Tabs.Screen
                     name='create'
                     options={{
-                        title: 'Create',
+                        title: 'Stats',
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.plus}
                                 color={color}
-                                name="Create"
+                                name="Stats"
                                 focused={focused}
                             />
                         )

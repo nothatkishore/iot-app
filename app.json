@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "social_media",
-    "slug": "social_media",
-    "scheme": "social_media",
+    "name": "IOT APP",
+    "slug": "IOT_APP",
+    "scheme": "IOT APP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,8 +27,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "890983fd-6bcf-43b4-9e08-b71f54b0d014"
+        "projectId": "91539b18-a628-4a6b-8330-268fbfbb99ea"
       }
-    }
+    },
+    "owner": "kishorear"
   }
 }
