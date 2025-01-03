@@ -1,38 +1,25 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Button } from 'react-native';
 import { React, useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import images from '../constants/images';
-import CButton from '../components/CButton';
-import { Redirect, router } from 'expo-router';
-import { useGlobalContext } from '../context/GlobalProvider';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { router } from 'expo-router';
 
-const index = () => 
-{
-  const { isLoading, isLogin } = useGlobalContext();
 
-  if (isLogin && !isLoading) 
-    return <Redirect href='/home' />;
-
+const index = () => {
   return (
-    <SafeAreaView className='bg-primary h-full'>
-      <View className='w-full items-center justify-center px-4 h-full'>
-        <Image source={images.logo} resizeMode='contain' className='h-[200px]' />
-        <Image source={images.cards} resizeMode='contain' className='h-[300px]' />
-        <View className='mt-5'>
-          <Text className='text-white text-3xl font-bold'>Hello,
-            <Text className='text-violet-300'>World</Text>
+    <GestureHandlerRootView>
+      <SafeAreaView className='bg-gray-100 h-full'>
+        <View className='w-full items-center justify-center px-4 h-full'>
+          <Text className="text-4xl text-white">
+             Predictive Maintenence of
           </Text>
+          <TouchableOpacity onPress={() => router.push("/home")}>
+              <Text className="text-white bg-yellow-400 rounded-xl p-5">Click me bro</Text>
+            </TouchableOpacity>
         </View>
-        <Text className='text-white text-sm'>
-          Where creativity meets innovation
-        </Text>
-        <CButton
-          title='Continue with E Mail'
-          handlePress={() => router.push('/signIn')}
-          containerStyles='w-full mt-7'
-        />
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 };
 

@@ -1,3 +1,3 @@
-## Social Media application
+## IOT Based Mobile application
 
-A Video sharing application built with React Native and Appwrite. Used expo tools for routing and media sharing. Native wind for styling the application. This application is supported on both Android and IOS...
+This is a mobile application used to moniter and report the values taken from hardware setup.
