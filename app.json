@@ -2,7 +2,7 @@
   "expo": {
     "name": "IOT APP",
     "slug": "IOT_APP",
-    "scheme": "IOT APP",
+    "scheme": "IOT_APP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

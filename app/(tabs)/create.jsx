@@ -1,22 +1,27 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 
 const App = () => {
   return (
-    <View className="flex-1 bg-white">
-      <WebView
-        source={{ uri: 'https://predictive-maintenance-of-electric-vehicle.streamlit.app/' }}
-        className="flex-1"
-        startInLoadingState={true}
-        renderLoading={() => (
-          <View className="flex-1 justify-center items-center">
-            <ActivityIndicator size="large" color="#00ff00" />
-          </View>
-        )}
+    <SafeAreaView style={styles.container}>
+       <WebView 
+        source={{ uri: 'https://predictive-maintenance-of-electric-vehicle.streamlit.app/' }} 
+        javaScriptEnabled={true} // Ensure JavaScript is enabled
+        style={styles.webview}
       />
-    </View>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  webview: {
+    flex: 1,
+  },
+});
 
 export default App;
