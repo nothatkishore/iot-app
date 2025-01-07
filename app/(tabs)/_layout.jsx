@@ -63,7 +63,23 @@ const TabsLayout = () => {
                             <TabIcon
                                 icon={icons.plus}
                                 color={color}
-                                name="Stats"
+                                name="LSTM"
+                                focused={focused}
+                            />
+                        )
+                    }}
+                />
+
+                <Tabs.Screen
+                    name='stats'
+                    options={{
+                        title: 'Stats1',
+                        headerShown: false,
+                        tabBarIcon: ({ color, focused }) => (
+                            <TabIcon
+                                icon={icons.play}
+                                color={color}
+                                name="Regression "
                                 focused={focused}
                             />
                         )

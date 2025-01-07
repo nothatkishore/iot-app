@@ -7,7 +7,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
        <WebView 
-        source={{ uri: 'https://predictive-maintenance-of-electric-vehicles.streamlit.app/' }} 
+        source={{ uri: 'https://predictive-maintenance-of-electric-vehicles-reg.streamlit.app/' }} 
         javaScriptEnabled={true} // Ensure JavaScript is enabled
         style={styles.webview}
       />
